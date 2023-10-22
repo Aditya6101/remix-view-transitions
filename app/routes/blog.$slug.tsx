@@ -1,14 +1,16 @@
 import { useParams } from "@remix-run/react";
+import { blogs } from "~/data";
 
 export default function Blogs() {
   const { slug } = useParams();
+  const posterImage = blogs.find((blog) => blog.title === slug)?.posterImage;
 
   return (
     <div className="py-8 px-2">
       <div style={{ viewTransitionName: "blog-hero" }}>
         <img
           className="w-full h-96 object-cover pb-4"
-          src="https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={posterImage}
           alt={slug}
         />
         <h1 className="text-3xl font-bold font-serif pb-2 text-neutral-200">
